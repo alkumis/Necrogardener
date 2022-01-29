@@ -7,6 +7,8 @@ public class Bone : MonoBehaviour, IInteractable
     [SerializeField]
     private GameObject pickUpText;
 
+    public Sprite equippedBone;
+
     public void DisableInteraction(PlayerController player)
     {
         pickUpText.SetActive(false);
@@ -55,5 +57,15 @@ public class Bone : MonoBehaviour, IInteractable
             return;
 
         DisableInteraction(collision.gameObject.GetComponent<PlayerController>());
+    }
+
+    public Sprite GibSprite()
+    {
+        return equippedBone;
+    }
+
+    public GameObject GibGameobject()
+    {
+        return this.gameObject;
     }
 }

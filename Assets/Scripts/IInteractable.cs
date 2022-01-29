@@ -6,7 +6,7 @@ public interface IInteractable
 
     void DisableInteraction(PlayerController player);
 
-    //Sprite GibSprite();
+    Sprite GibSprite();
 
-    //void Interact();
+    GameObject GibGameobject();
 }
