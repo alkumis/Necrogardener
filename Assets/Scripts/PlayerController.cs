@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float movementSpeed;
     private Vector2 movementVector;
+    public IInteractable interactable;
+
     // Start is called before the first frame update
     void Start()
     {
