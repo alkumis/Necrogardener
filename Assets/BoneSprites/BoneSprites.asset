@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlanterBone: {fileID: 21300000, guid: ba37a655b9f2a4346a19037345cc7d49, type: 3}
   PlanterBoneStages:
-  - {fileID: 21300000, guid: 1dfa956f53726493689918d925dca218, type: 3}
-  - {fileID: 21300000, guid: b50f99623385c45cea90cb566c2706bf, type: 3}
+  - {fileID: 21300000, guid: fc364aa2cbd7a431d8a4d9e42deff9ce, type: 3}
+  - {fileID: 21300000, guid: b011c55323b2e42e4821009e087eafec, type: 3}
+  - {fileID: 21300000, guid: a9c4ef7435be34c7c8d00367e313208c, type: 3}
   Skeleton: {fileID: 988649610535606094, guid: 58176495f3b524437827131ea09fbede, type: 3}
