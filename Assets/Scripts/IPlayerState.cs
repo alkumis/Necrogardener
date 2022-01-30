@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IPlayerState 
 {
-    void PickOrDrop(PlayerController player);
+    IPlayerState PickOrDrop(PlayerController player);
 }

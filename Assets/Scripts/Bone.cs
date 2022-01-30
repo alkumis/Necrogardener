@@ -5,50 +5,40 @@ using UnityEngine;
 public class Bone : MonoBehaviour, IInteractable
 {
     [SerializeField]
-    private GameObject pickUpText;
+    private GameObject _pickUpText;
 
-    public Sprite equippedBone;
+    [SerializeField]
+    private Sprite _equippedBone;
 
-    public void DisableInteraction(PlayerController player)
-    {
-        pickUpText.SetActive(false);
-        player.interactable = null;
-    }
+    private Sprite _planterBone;
 
     public void EnableInteraction(PlayerController player)
     {
-        pickUpText.SetActive(true);
-        player.interactable = this;
+        _pickUpText.SetActive(true);
+        player.Interactable = this;
     }
 
-    //public Sprite GibSprite()
-    //{
-    //    throw new System.NotImplementedException();
-    //}
-
-    //public void Interact()
-    //{
-    //    throw new System.NotImplementedException();
-    //}
-
-    // Start is called before the first frame update
-    void Start()
+    public void DisableInteraction(PlayerController player)
     {
-        
-    }
+        _pickUpText.SetActive(false);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (player.Interactable == this)
+        {
+            player.Interactable = null;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<PlayerController>().Equals(null))
+        if (collision.GetComponent<PlayerController>().Equals(null))
             return;
 
-        EnableInteraction(collision.gameObject.GetComponent<PlayerController>());
+        IPlayerState playerState = collision.GetComponent<PlayerController>().State;
+
+        if (playerState is Regular)
+        {
+            EnableInteraction(collision.gameObject.GetComponent<PlayerController>());
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -59,9 +49,14 @@ public class Bone : MonoBehaviour, IInteractable
         DisableInteraction(collision.gameObject.GetComponent<PlayerController>());
     }
 
-    public Sprite GibSprite()
+    public Sprite GibEquipSprite()
     {
-        return equippedBone;
+        return _equippedBone;
+    }
+
+    public Sprite GibPlanterSprite()
+    {
+        return _planterBone;
     }
 
     public GameObject GibGameobject()

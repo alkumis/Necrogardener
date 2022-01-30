@@ -6,43 +6,55 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    private float movementSpeed;
-    private Vector2 movementVector;
+    private float _movementSpeed;
+    private Vector2 _movementVector;
 
-    public IInteractable interactable;
-    IPlayerState state;
+    public IInteractable Interactable;
+    private IPlayerState _state;
+
+    public IPlayerState State
+    {
+        get { return _state; }
+    }
 
     [SerializeField]
-    private SpriteRenderer equippedItem;
+    private SpriteRenderer _equippedItem;
 
     // Start is called before the first frame update
     void Start()
     {
-        state = new RegularState();
+        _state = new Regular();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.Translate(new Vector3(movementVector.x, movementVector.y, 0));
+        transform.Translate(new Vector3(_movementVector.x, _movementVector.y, 0));
     }
 
     public void UpdatedMoveVector(InputAction.CallbackContext context)
     {
         Vector2 inputVector = context.ReadValue<Vector2>();
-        movementVector = inputVector * movementSpeed * Time.fixedDeltaTime;
+        _movementVector = inputVector * _movementSpeed * Time.fixedDeltaTime;
     }
 
     public void EquipItem(Sprite equippableSprite)
     {
-        equippedItem.sprite = equippableSprite;
+        _equippedItem.sprite = equippableSprite;
     }
 
     public void PickOrDrop(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Performed && interactable != null)
+        if ((context.phase == InputActionPhase.Performed) && (Interactable != null))
         {
-            state.PickOrDrop(this);
+            IPlayerState newState = _state.PickOrDrop(this);
+
+            if(newState != null)
+            {
+                _state = newState;
+            }
+
+            Interactable = null;
         }
     }    
 }
