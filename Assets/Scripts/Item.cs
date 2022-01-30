@@ -28,7 +28,7 @@ public class Item : MonoBehaviour, IEquippable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<PlayerController>().Equals(null))
+        if (collision.GetComponent<PlayerController>() == null)
             return;
 
         if (collision.GetComponent<PlayerController>().State is Regular)
@@ -39,7 +39,7 @@ public class Item : MonoBehaviour, IEquippable
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<PlayerController>().Equals(null))
+        if (collision.gameObject.GetComponent<PlayerController>() == null)
             return;
 
         DisableInteraction(collision.gameObject.GetComponent<PlayerController>());

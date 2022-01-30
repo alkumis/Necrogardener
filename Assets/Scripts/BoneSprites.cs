@@ -5,4 +5,5 @@ public class BoneSprites : ScriptableObject
 {
     public Sprite PlanterBone;
     public Sprite[] PlanterBoneStages;
+    public GameObject Skeleton;
 }

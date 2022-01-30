@@ -16,6 +16,9 @@ public class Boned : IPlanterState
         {
             player.UnequipItem();
             planter.DisableInteraction(player);
+            planter.UnquipBone();
+            GameObject skeleton =  GameObject.Instantiate(planter.PlantedBoneSprites.Skeleton);
+            skeleton.GetComponent<SkeletonFollow>().Player = player.transform;
             return new NotBoned();
         }
 

@@ -16,3 +16,4 @@ MonoBehaviour:
   PlanterBoneStages:
   - {fileID: 21300000, guid: 1dfa956f53726493689918d925dca218, type: 3}
   - {fileID: 21300000, guid: b50f99623385c45cea90cb566c2706bf, type: 3}
+  Skeleton: {fileID: 988649610535606094, guid: 58176495f3b524437827131ea09fbede, type: 3}
