@@ -7,8 +7,12 @@ public class Regular : IPlayerState
     public IPlayerState PickOrDrop(PlayerController player)
     {
         player.EquipItem(player.Equippable.GibEquipSprite());
-        player.PlanterBone = player.Equippable.GibPlanterSprite();
         player.Equippable.GibGameobject().SetActive(false);
+        if (player.Equippable is Bone)
+        {
+            Bone bone = (Bone)player.Equippable;
+            player.PlanterBone = bone.GibPlanterSprite();
+        }
         return new Holding();
     }
 }

@@ -9,7 +9,8 @@ public class PlayerController : MonoBehaviour
     private float _movementSpeed;
     private Vector2 _movementVector;
 
-    public IEquippable Equippable;
+    [HideInInspector]
+    public Item Equippable;
     [HideInInspector]
     public Planter Plantable;
     private IPlayerState _state;

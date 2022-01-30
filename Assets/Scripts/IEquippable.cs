@@ -6,7 +6,5 @@ public interface IEquippable : IInteractable
 {
     Sprite GibEquipSprite();
 
-    Sprite GibPlanterSprite();
-
     GameObject GibGameobject();
 }
