@@ -9,7 +9,9 @@ public class PlayerController : MonoBehaviour
     private float _movementSpeed;
     private Vector2 _movementVector;
 
-    public IInteractable Interactable;
+    public IEquippable Equippable;
+    [HideInInspector]
+    public Planter Plantable;
     private IPlayerState _state;
 
     public IPlayerState State
@@ -19,6 +21,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private SpriteRenderer _equippedItem;
+
+    [HideInInspector]
+    public Sprite PlanterBone;
 
     // Start is called before the first frame update
     void Start()
@@ -43,9 +48,15 @@ public class PlayerController : MonoBehaviour
         _equippedItem.sprite = equippableSprite;
     }
 
+    public void UnequipItem()
+    {
+        _equippedItem.sprite = null;
+        _state = new Regular();
+    }
+
     public void PickOrDrop(InputAction.CallbackContext context)
     {
-        if ((context.phase == InputActionPhase.Performed) && (Interactable != null))
+        if ((context.phase == InputActionPhase.Performed) && (Equippable != null))
         {
             IPlayerState newState = _state.PickOrDrop(this);
 
@@ -53,8 +64,15 @@ public class PlayerController : MonoBehaviour
             {
                 _state = newState;
             }
-
-            Interactable = null;
         }
-    }    
+    }
+
+    public void PlantOrGrow(InputAction.CallbackContext context)
+    {
+        if ((context.phase == InputActionPhase.Performed) && (Plantable != null))
+        {
+            Debug.Log("Plant or Grow being called at player");
+            Plantable.PlantOrGrow(this);
+        }
+    }
 }

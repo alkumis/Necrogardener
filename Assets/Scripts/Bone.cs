@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bone : MonoBehaviour, IInteractable
+public class Bone : MonoBehaviour, IEquippable
 {
     [SerializeField]
     private GameObject _pickUpText;
@@ -10,22 +10,19 @@ public class Bone : MonoBehaviour, IInteractable
     [SerializeField]
     private Sprite _equippedBone;
 
+    [SerializeField]
     private Sprite _planterBone;
 
     public void EnableInteraction(PlayerController player)
     {
         _pickUpText.SetActive(true);
-        player.Interactable = this;
+
+        player.Equippable = this;
     }
 
     public void DisableInteraction(PlayerController player)
     {
         _pickUpText.SetActive(false);
-
-        if (player.Interactable == this)
-        {
-            player.Interactable = null;
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -33,9 +30,7 @@ public class Bone : MonoBehaviour, IInteractable
         if (collision.GetComponent<PlayerController>().Equals(null))
             return;
 
-        IPlayerState playerState = collision.GetComponent<PlayerController>().State;
-
-        if (playerState is Regular)
+        if (collision.GetComponent<PlayerController>().State is Regular)
         {
             EnableInteraction(collision.gameObject.GetComponent<PlayerController>());
         }

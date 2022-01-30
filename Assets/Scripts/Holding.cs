@@ -6,6 +6,6 @@ public class Holding : IPlayerState
 {
     public IPlayerState PickOrDrop(PlayerController player)
     {
-        return new Regular();
+        return new Holding();
     }
 }
