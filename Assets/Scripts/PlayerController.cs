@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer _equippedItem;
 
     [HideInInspector]
-    public Sprite PlanterBone;
+    public BoneSprites BoneSprites;
 
     // Start is called before the first frame update
     void Start()
@@ -72,7 +72,6 @@ public class PlayerController : MonoBehaviour
     {
         if ((context.phase == InputActionPhase.Performed) && (Plantable != null))
         {
-            Debug.Log("Plant or Grow being called at player");
             Plantable.PlantOrGrow(this);
         }
     }

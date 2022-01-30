@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IEquippable : IInteractable
 {
-    Sprite GibEquipSprite();
+    Sprite GibEquipSprite { get; }
 
-    GameObject GibGameobject();
+    GameObject GibGameobject { get; }
 }

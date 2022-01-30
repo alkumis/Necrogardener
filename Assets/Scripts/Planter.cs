@@ -5,12 +5,16 @@ using UnityEngine;
 public class Planter : MonoBehaviour, IInteractable
 {
     [SerializeField]
-    private GameObject _interactText;
+    private GameObject _plantText;
+
+    [SerializeField]
+    private GameObject _growText;
 
     private IPlanterState _state;
 
     [SerializeField]
     private SpriteRenderer _plantedBone;
+    public BoneSprites PlantedBoneSprites;
 
     private void Start()
     {
@@ -29,12 +33,22 @@ public class Planter : MonoBehaviour, IInteractable
 
     public void EnableInteraction(PlayerController player)
     {
+        Debug.Log(player.Equippable);
+        Debug.Log(_state);
         switch(_state)
         {
             case NotBoned:
                 if(player.Equippable is Bone)
                 {
-                    _interactText.SetActive(true);
+                    _plantText.SetActive(true);
+                    player.Plantable = this;
+                }
+                break;
+
+            case Boned:
+                if (player.Equippable is WaterCan)
+                {
+                    _growText.SetActive(true);
                     player.Plantable = this;
                 }
                 break;
@@ -43,7 +57,19 @@ public class Planter : MonoBehaviour, IInteractable
 
     public void DisableInteraction(PlayerController player)
     {
-        _interactText.SetActive(false);
+        switch (_state)
+        {
+            case NotBoned:
+                if (player.Equippable is Bone)
+                    _plantText.SetActive(false);
+                break;
+
+            case Boned:
+                if (player.Equippable is WaterCan)
+                    _growText.SetActive(false);
+                    player.Plantable = this;
+                break;
+        }
         player.Plantable = null;
     }
 

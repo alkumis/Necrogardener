@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b86ad775cc9143f9be02854402751cd, type: 3}
+  m_Name: BoneSprites
+  m_EditorClassIdentifier: 
+  PlanterBone: {fileID: 21300000, guid: ba37a655b9f2a4346a19037345cc7d49, type: 3}
+  PlanterBoneStages:
+  - {fileID: 21300000, guid: 1dfa956f53726493689918d925dca218, type: 3}
+  - {fileID: 21300000, guid: b50f99623385c45cea90cb566c2706bf, type: 3}

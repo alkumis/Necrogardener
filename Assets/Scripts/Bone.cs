@@ -5,10 +5,7 @@ using UnityEngine;
 public class Bone : Item
 {
     [SerializeField]
-    private Sprite _planterItem;
+    private BoneSprites _boneSprites;
 
-    public Sprite GibPlanterSprite()
-    {
-        return _planterItem;
-    }
+    public BoneSprites GibBoneSprites { get { return _boneSprites; } }
 }

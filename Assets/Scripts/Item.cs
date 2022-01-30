@@ -10,6 +10,10 @@ public class Item : MonoBehaviour, IEquippable
     [SerializeField]
     private Sprite _equippedItem;
 
+    public Sprite GibEquipSprite { get { return _equippedItem; } }
+
+    public GameObject GibGameobject { get { return this.gameObject; } }
+
     public void EnableInteraction(PlayerController player)
     {
         _pickUpText.SetActive(true);
@@ -39,15 +43,5 @@ public class Item : MonoBehaviour, IEquippable
             return;
 
         DisableInteraction(collision.gameObject.GetComponent<PlayerController>());
-    }
-
-    public Sprite GibEquipSprite()
-    {
-        return _equippedItem;
-    }
-
-    public GameObject GibGameobject()
-    {
-        return this.gameObject;
     }
 }
