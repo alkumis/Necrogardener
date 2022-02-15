@@ -32,16 +32,16 @@ public class PlayerController : MonoBehaviour
         _state = new Regular();
     }
 
-    // Update is called once per frame
+    //Update is called once per frame
     void FixedUpdate()
     {
-        transform.Translate(new Vector3(_movementVector.x, _movementVector.y, 0));
+        transform.Translate(new Vector3(_movementVector.x, _movementVector.y, 0) * Time.fixedDeltaTime);
     }
 
-    public void UpdatedMoveVector(InputAction.CallbackContext context)
+    public void UpdateMoveVector(InputAction.CallbackContext context)
     {
         Vector2 inputVector = context.ReadValue<Vector2>();
-        _movementVector = inputVector * _movementSpeed * Time.fixedDeltaTime;
+        _movementVector = inputVector * _movementSpeed;
     }
 
     public void EquipItem(Sprite equippableSprite)

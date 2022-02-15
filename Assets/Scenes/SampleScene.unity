@@ -777,7 +777,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 1, y: 1}
   m_Direction: 0
 --- !u!50 &598521055
 Rigidbody2D:
@@ -2994,7 +2994,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1, y: 1}
   m_Direction: 0
 --- !u!1 &1950948051
 GameObject:
@@ -3355,7 +3355,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2069837588}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: UpdatedMoveVector
+        m_MethodName: UpdateMoveVector
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
